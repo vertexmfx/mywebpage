@@ -1,3 +1,6 @@
+<?php
+header("content-type:text/html;charset=utf-8");
+?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 	<head>

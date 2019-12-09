@@ -1,4 +1,5 @@
 <?php
+header("content-type:text/html;charset=utf-8");
 include 'mysqlfunc.php';
 if(isset($_POST['submit']) and !empty($_POST['submit'])) {
     global $usrname, $usrid;

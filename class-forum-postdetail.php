@@ -1,4 +1,5 @@
 <?php
+header("content-type:text/html;charset=utf-8");
 include "mysqlfunc.php";
 $postid=$_GET['postid'];
 $post=get_posts_by_id($conn,$postid);
