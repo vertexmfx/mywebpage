@@ -85,7 +85,7 @@ header("content-type:text/html;charset=utf-8");
                     } else {
                         $category = $_GET['category'];
                     }
-                    $filepath = __DIR__ . "\class-resources\\" . $category;
+                    $filepath = __DIR__ . "/class-resources/" . $category;
                     $filelist = scandir($filepath);
                     foreach ($filelist as $key => $filename) {
                         if ($key == 0 or $key == 1) {
