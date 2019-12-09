@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
+﻿-- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
 -- Host: localhost    Database: doe
 -- ------------------------------------------------------
@@ -24,14 +24,14 @@ DROP TABLE IF EXISTS `postinfo`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `postinfo` (
   `postid` int(11) NOT NULL AUTO_INCREMENT,
-  `topic` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `description` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `topic` tinytext CHARACTER SET utf8mb4 COLLATE utf8_unicode_ci NOT NULL,
+  `description` mediumtext CHARACTER SET utf8mb4 COLLATE utf8_unicode_ci NOT NULL,
   `foundtime` datetime(6) NOT NULL,
-  `tag` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `tag` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8_unicode_ci NOT NULL,
   `views` int(11) NOT NULL DEFAULT '0',
   `replys` int(11) NOT NULL DEFAULT '0',
   `usrid` int(11) NOT NULL,
-  `usrname` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `usrname` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`postid`,`usrid`),
   UNIQUE KEY `postnum_UNIQUE` (`postid`),
   KEY `usrid_idx` (`usrid`),
@@ -58,20 +58,20 @@ DROP TABLE IF EXISTS `ranks`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ranks` (
   `rankerid` int(11) NOT NULL,
-  `rankername` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `rankername` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8_unicode_ci NOT NULL,
   `rankedid` int(11) NOT NULL,
-  `rankedname` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `r1` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'None',
-  `r2` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'None',
-  `r3` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'None',
-  `r4` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'None',
-  `r5` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'None',
-  `r6` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'None',
-  `r7` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'None',
-  `r8` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'None',
-  `r9` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'None',
-  `r10` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'None',
-  `rankscol` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'None',
+  `rankedname` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8_unicode_ci NOT NULL,
+  `r1` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8_unicode_ci DEFAULT 'None',
+  `r2` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8_unicode_ci DEFAULT 'None',
+  `r3` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8_unicode_ci DEFAULT 'None',
+  `r4` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8_unicode_ci DEFAULT 'None',
+  `r5` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8_unicode_ci DEFAULT 'None',
+  `r6` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8_unicode_ci DEFAULT 'None',
+  `r7` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8_unicode_ci DEFAULT 'None',
+  `r8` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8_unicode_ci DEFAULT 'None',
+  `r9` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8_unicode_ci DEFAULT 'None',
+  `r10` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8_unicode_ci DEFAULT 'None',
+  `rankscol` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8_unicode_ci DEFAULT 'None',
   PRIMARY KEY (`rankerid`,`rankedid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -95,11 +95,11 @@ DROP TABLE IF EXISTS `replys`;
 CREATE TABLE `replys` (
   `replyid` int(11) NOT NULL AUTO_INCREMENT,
   `postid` int(11) NOT NULL,
-  `content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8_unicode_ci NOT NULL,
   `usrid` int(11) NOT NULL,
   `sendtime` datetime(6) NOT NULL,
   `likes` int(11) NOT NULL DEFAULT '0',
-  `usrname` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `usrname` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`replyid`),
   UNIQUE KEY `replynum_UNIQUE` (`replyid`),
   KEY `postnum_idx` (`postid`),
