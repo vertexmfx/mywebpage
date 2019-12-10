@@ -1,3 +1,6 @@
+<?php
+//phpinfo();
+?>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -9,21 +12,23 @@
 </head>
 <body>
 <?php
-$servername='localhost:3300';
+$servername='localhost';
 $mysqlusername='root';
 $mysqlpasswd='123456';
 $dbname='doe';
 $conn=new mysqli($servername,$mysqlusername,$mysqlpasswd,$dbname);
-/*if($conn->connect_error){
-    die('连接失败：'.$conn->connect_error);
+if($conn->connect_error){
+    die('connect failure'.$conn->connect_error);
 }else{
-    echo "连接成功";
+    echo "connect success!";
 }
-$sql='select * from usrinfo';
+$sql="use doe";
+echo $sql;
 $result=mysqli_query($conn,$sql);
+print($result);
 $getdata=mysqli_fetch_all($result,MYSQLI_ASSOC)[0]['usrname'];
 echo $getdata;
-*/
+
 //include "mysqlfunc.php";
 
 #$posts=get_posts($conn);
