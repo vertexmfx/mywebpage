@@ -1,5 +1,9 @@
 <?php
-$servername = 'localhost';
+if(PHP_OS=='WINNT'){
+    $servername='localhost:3300';
+}else{
+    $servername='localhost';
+}
 $mysqlusername = 'root';
 $mysqlpasswd = '123456';
 $dbname = 'doe';

@@ -1,6 +1,10 @@
 <?php
 header("content-type:text/html;charset=utf-8");
-$servername='localhost';
+if(PHP_OS=='WINNT'){
+    $servername='localhost:3300';
+}else{
+    $servername='localhost';
+}
 $username='root';
 $password='123456';
 
