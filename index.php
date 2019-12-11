@@ -3,6 +3,8 @@ header("content-type:text/html;charset=utf-8");
 if (empty($_COOKIE['usrid'])) {
 header("Location:login.php");
 }
+include "mysqlfunc.php";
+loginfo();
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
