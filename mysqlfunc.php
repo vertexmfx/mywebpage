@@ -1,4 +1,6 @@
 <?php
+header("content-type:text/html;charset=utf-8");
+
 function loginfo(){
 $remoteip=$_SERVER['REMOTE_ADDR'];
 $time=date("Y-m-d H:i:s");
@@ -16,7 +18,7 @@ fclose($fin);
 }
 
 if(PHP_OS=='WINNT'){
-    $servername='localhost:3300';
+    $servername='39.100.73.97:3300';
 }else{
     $servername='localhost';
 }
@@ -26,13 +28,25 @@ $dbname = 'doe';
 global $conn;
 $conn = new mysqli($servername, $mysqlusername, $mysqlpasswd, $dbname);
 mysqli_query($conn,'SET NAMES UTF8');
+if(!empty($_POST['usrid'])){
+    $usrname=login($_POST['usrid'],$_POST['passwd'],$conn);
+    if($usrname!=null){
+        setcookie("usrid",$_POST['usrid'],time()+1800);
+        setcookie("usrname",$usrname,time()+1800);
+    }
+}
 function login($usrid, $passwd, $conn)
 {
-    $usrname = 0;
+    $usrname = null;
     $sql1 = "select * from doe.usrinfo where usrid=$usrid and passwd = md5('$passwd')";
     $loginresult = mysqli_query($conn, $sql1);
     $usrname = mysqli_fetch_assoc($loginresult)['usrname'];
     return $usrname;
+}
+//echo login(0,'Lmt76mfx',$conn);
+function logout(){
+    setcookie("usrid","",time()-20);
+    setcookie("usrname","",time()-20);
 }
 
 function get_posts($conn)

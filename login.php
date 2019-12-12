@@ -1,63 +1,73 @@
-<?php
-header("content-type:text/html;charset=utf-8");
-include 'mysqlfunc.php';
-if(isset($_POST['submit']) and !empty($_POST['submit'])) {
-    global $usrname, $usrid;
-    $usrid = $_POST['inputusrid'];
-    $usrname = login($usrid, $_POST['inputpasswd'], $conn);
-    if ($usrname != '') {
-        setcookie("usrid", "$usrid", time() + 1800);
-        setcookie("usrname","$usrname",time()+1800);
-        header('Location:index.php');
-    }
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta content="text/html" charset="utf-8">
   <title>登录</title>
   <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
   <meta name="author" content="Vincent Garreau" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" media="screen" href="css/style.css">
   <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+    <script src="dist/js/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function login(){
+            var usrid=document.getElementById('inputusrid').value;
+            var passwd=document.getElementById('inputpasswd').value;
+            var data={usrid:usrid,passwd:passwd};
+            alert(data);
+            $.ajax({
+                type:"POST",
+                dataType:"text",
+                url:"functions/test2.php",
+                data:{'usrid':usrid,'passwd':passwd},
+                success:function (data) {
+                    alert(data);
+                    alert("登陆成功！");
+                },
+                error:function (result) {
+                    alert("异常");
+                }
+            });}
+        /*$(document).ready(function () {
+            $('.login-button').click(function () {
+                var usrid=document.getElementById('inputusrid');
+                var passwd=document.getElementById('inputpasswd');
+                var data={'usrid':usrid,'passwd':passwd};
+                alert(data['usrid']);
+                $.post('mysqlfunc.php',data,function(response){
+                    if(response !=null){
+                        window.location.href="index.php";
+                    }else {
+                        alert("用户名或密码错误");
+                    }
+                })
+            })
+        })}*/
+    </script>
 </head>
 <body>
-
-<?php
-if(isset($_POST['submit']) and !empty($_POST['submit']))
-   { if($usrname==0){
-        print <<<SC
-<script>
-alert('用户名或密码错误');
-</script>
-SC;
-    }}
-
-?>
 <div id="particles-js">
 		<div class="login">
 			<div class="login-top">
 				登录
 			</div>
-            <form action="login.php" method="post" name="usrinfo" enctype="multipart/form-data">
+            <form id="usrinfo" name="usrinfo" enctype="multipart/form-data">
 			<div class="login-center clearfix">
 				<div class="login-center-img"><img src="img/name.png"/></div>
 				<div class="login-center-input">
-					<input type="text" name="inputusrid" value="" id="inputusrid" placeholder="请输入您的账号" onfocus="this.placeholder=''" onblur="this.placeholder='请输入您的账号'"/>
+					<input type="text" name="usrid" value="" id="inputusrid" placeholder="请输入您的账号" onfocus="this.placeholder=''" onblur="this.placeholder='请输入您的账号'"/>
 					<div class="login-center-input-text">账号</div>
 				</div>
 			</div>
 			<div class="login-center clearfix">
 				<div class="login-center-img"><img src="img/password.png"/></div>
 				<div class="login-center-input">
-					<input type="password" name="inputpasswd" value="" id="inputpasswd" placeholder="请输入您的密码" onfocus="this.placeholder=''" onblur="this.placeholder='请输入您的密码'"/>
+					<input type="password" name="passwd" value="" id="inputpasswd" placeholder="请输入您的密码" onfocus="this.placeholder=''" onblur="this.placeholder='请输入您的密码'"/>
 					<div class="login-center-input-text">密码</div>
 				</div>
 			</div>
 			<div class="login-center">
-                <input type="submit" name="submit" class="login-button" value="登录">
+                <input type="button" name="submit" class="login-button" onclick="login()" value="登录">
 			</div>
             </form>
 		</div>
@@ -67,6 +77,7 @@ SC;
 <!-- scripts -->
 <script src="js/particles.min.js"></script>
 <script src="js/app.js"></script>
+
 <script type="text/javascript">
 	function hasClass(elem, cls) {
 	  cls = cls || '';

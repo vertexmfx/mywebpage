@@ -37,7 +37,8 @@ loginfo();
                 <div class="brand header-brand">
                     <?php
                     if (!empty($_COOKIE['usrid'])) {
-                        echo "<a href='usrinfo.php' class='btn btn-light' role='button'>{$_COOKIE['usrname']}</a>";
+                        echo "<a href='usrinfo.php' class='btn btn-default' role='button'>{$_COOKIE['usrname']}</a>
+                                    <a class='btn btn-link logout'>退出</a>";
                     } else {
                         print <<<TEXT
 <a href="login.php" class="btn btn-primary" role="button">登录</a>
@@ -46,6 +47,16 @@ TEXT;
                     }
                     ?>
                 </div>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('.logout').click(function () {
+                            $.post('functions/logout.php',{},function(response){
+                                window.location.href='login.php';
+                                alert('已退出登录');
+                            })
+                        })
+                    })
+                </script>
 
             </div>
     </header>
