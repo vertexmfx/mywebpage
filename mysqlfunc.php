@@ -28,11 +28,10 @@ $dbname = 'doe';
 global $conn;
 $conn = new mysqli($servername, $mysqlusername, $mysqlpasswd, $dbname);
 mysqli_query($conn,'SET NAMES UTF8');
-if(!empty($_POST['usrid'])){
-    $usrname=login($_POST['usrid'],$_POST['passwd'],$conn);
-    if($usrname!=null){
-        setcookie("usrid",$_POST['usrid'],time()+1800);
-        setcookie("usrname",$usrname,time()+1800);
+if(!empty($_POST['require'])){
+    switch ($_POST['require']){
+        case 'login':
+            login($_POST['usrid'],$_POST['passwd'],$conn);
     }
 }
 function login($usrid, $passwd, $conn)
@@ -41,7 +40,13 @@ function login($usrid, $passwd, $conn)
     $sql1 = "select * from doe.usrinfo where usrid=$usrid and passwd = md5('$passwd')";
     $loginresult = mysqli_query($conn, $sql1);
     $usrname = mysqli_fetch_assoc($loginresult)['usrname'];
-    return $usrname;
+    if($usrname!=null){
+        setcookie("usrid",$_POST['usrid'],time()+1800);
+        setcookie("usrname",$usrname,time()+1800);
+        echo 1;
+        }else{
+        echo 0;
+        }
 }
 //echo login(0,'Lmt76mfx',$conn);
 function logout(){

@@ -11,38 +11,24 @@
     <script src="dist/js/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         function login(){
-            var usrid=document.getElementById('inputusrid').value;
-            var passwd=document.getElementById('inputpasswd').value;
-            var data={usrid:usrid,passwd:passwd};
-            alert(data);
+            var data=$('#usrinfo').serializeArray();
             $.ajax({
                 type:"POST",
                 dataType:"text",
-                url:"functions/test2.php",
-                data:{'usrid':usrid,'passwd':passwd},
+                url:"mysqlfunc.php",
+                data:data,
                 success:function (data) {
-                    alert(data);
-                    alert("登陆成功！");
+                    if(data==1){
+                        window.location.href="index.php";
+                    }else{
+                        alert("用户名或密码错误");
+                        window.location.href="login.php";
+                    }
                 },
                 error:function (result) {
-                    alert("异常");
+                    alert("登录异常");
                 }
             });}
-        /*$(document).ready(function () {
-            $('.login-button').click(function () {
-                var usrid=document.getElementById('inputusrid');
-                var passwd=document.getElementById('inputpasswd');
-                var data={'usrid':usrid,'passwd':passwd};
-                alert(data['usrid']);
-                $.post('mysqlfunc.php',data,function(response){
-                    if(response !=null){
-                        window.location.href="index.php";
-                    }else {
-                        alert("用户名或密码错误");
-                    }
-                })
-            })
-        })}*/
     </script>
 </head>
 <body>
@@ -55,6 +41,7 @@
 			<div class="login-center clearfix">
 				<div class="login-center-img"><img src="img/name.png"/></div>
 				<div class="login-center-input">
+                    <input type="hidden" name="require" value="login">
 					<input type="text" name="usrid" value="" id="inputusrid" placeholder="请输入您的账号" onfocus="this.placeholder=''" onblur="this.placeholder='请输入您的账号'"/>
 					<div class="login-center-input-text">账号</div>
 				</div>

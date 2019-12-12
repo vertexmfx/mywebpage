@@ -1,6 +1,6 @@
 <?php
 header("content-type:text/html;charset=utf-8");
-if (empty($_COOKIE['usrid'])) {
+if (empty($_COOKIE['usrname'])) {
 header("Location:login.php");
 }
 include "mysqlfunc.php";
@@ -36,7 +36,7 @@ loginfo();
                 </div>
                 <div class="brand header-brand">
                     <?php
-                    if (!empty($_COOKIE['usrid'])) {
+                    if (!empty($_COOKIE['usrname'])) {
                         echo "<a href='usrinfo.php' class='btn btn-default' role='button'>{$_COOKIE['usrname']}</a>
                                     <a class='btn btn-link logout'>退出</a>";
                     } else {
