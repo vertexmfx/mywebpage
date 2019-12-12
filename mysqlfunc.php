@@ -4,7 +4,7 @@ header("content-type:text/html;charset=utf-8");
 function loginfo(){
 $remoteip=$_SERVER['REMOTE_ADDR'];
 $time=date("Y-m-d H:i:s");
-if(!empty($_COOKIE['usrid'])){
+if(!empty($_COOKIE['usrname'])){
 $usrid=$_COOKIE['usrid'];
 $usrname=$_COOKIE['usrname'];
 }else{
