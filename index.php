@@ -43,7 +43,7 @@ loginfo();
                     } else {
                         print <<<TEXT
 <a href="login.php" class="btn btn-primary" role="button">登录</a>
-                    <a href="reg.php" class="btn btn-link" role="button">注册</a> </div>
+                    <a href="reg.html" class="btn btn-link" role="button">注册</a> </div>
 TEXT;
                     }
                     ?>
