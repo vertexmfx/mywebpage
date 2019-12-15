@@ -15,7 +15,7 @@
             $.ajax({
                 type:"POST",
                 dataType:"text",
-                url:"mysqlfunc.php",
+                url:"mysqlfunc.php?require=login",
                 data:data,
                 success:function (data) {
                     if(data==1){
@@ -41,7 +41,6 @@
 			<div class="login-center clearfix">
 				<div class="login-center-img"><img src="img/name.png"/></div>
 				<div class="login-center-input">
-                    <input type="hidden" name="require" value="login">
 					<input type="text" name="usrid" value="" id="inputusrid" placeholder="请输入您的账号" onfocus="this.placeholder=''" onblur="this.placeholder='请输入您的账号'"/>
 					<div class="login-center-input-text">账号</div>
 				</div>
@@ -55,6 +54,7 @@
 			</div>
 			<div class="login-center">
                 <input type="button" name="submit" class="login-button" onclick="login()" value="登录">
+                <input type="button" name="reg" class="login-button" onclick="window.location.href='reg.html'" value="注册" style="margin-top: 10px;background: #3c763d">
 			</div>
             </form>
 		</div>

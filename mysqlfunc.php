@@ -28,8 +28,8 @@ $dbname = 'doe';
 global $conn;
 $conn = new mysqli($servername, $mysqlusername, $mysqlpasswd, $dbname);
 mysqli_query($conn,'SET NAMES UTF8');
-if(!empty($_POST['require'])){
-    switch ($_POST['require']){
+if(!empty($_GET['require'])){
+    switch ($_GET['require']){
         case 'login':
             login($_POST['usrid'],$_POST['passwd'],$conn);
             break;
