@@ -1,6 +1,7 @@
 <?php
+//include "mysqlfunc.php";
 header("content-type:text/html;charset=utf-8");
-if (empty($_COOKIE['usrname'])) {
+if (empty($_COOKIE['usrid'])) {
 header("Location:login.php");
 }
 include "mysqlfunc.php";
@@ -50,7 +51,7 @@ TEXT;
                 <script type="text/javascript">
                     $(document).ready(function () {
                         $('.logout').click(function () {
-                            $.post('functions/logout.php',{},function(response){
+                            $.post('mysqlfuncs.php','?require=logout',function(response){
                                 window.location.href='login.php';
                                 alert('已退出登录');
                             })

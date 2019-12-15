@@ -5,13 +5,13 @@ function loginfo(){
 $remoteip=$_SERVER['REMOTE_ADDR'];
 $time=date("Y-m-d H:i:s");
 if(!empty($_COOKIE['usrname'])){
-$usrid=$_COOKIE['usrid'];
-$usrname=$_COOKIE['usrname'];
+$usridinfo=$_COOKIE['usrid'];
+$usrnameinfo=$_COOKIE['usrname'];
 }else{
-$usrid='null';
-$usrname='null';
+$usridinfo='null';
+$usrnameinfo='null';
 }
-$loadinfo= "$remoteip,$time,$usrid,$usrname;\n";
+$loadinfo= "$remoteip,$time,$usridinfo,$usrnameinfo;\n";
 $fin=fopen('loginfo.txt','a');
 fwrite($fin,$loadinfo);
 fclose($fin);
@@ -32,6 +32,16 @@ if(!empty($_POST['require'])){
     switch ($_POST['require']){
         case 'login':
             login($_POST['usrid'],$_POST['passwd'],$conn);
+            break;
+        case 'reg':
+            reg($conn,$_POST['usrid'],$_POST['usrname'],$_POST['passwd'],$_POST['groupname']
+                    ,$_POST['description']);
+            break;
+        case 'logout':
+            logout();
+            break;
+        default:
+            continue;
     }
 }
 function login($usrid, $passwd, $conn)
@@ -48,12 +58,21 @@ function login($usrid, $passwd, $conn)
         echo 0;
         }
 }
+//login(2017,'1234',$conn);
+function reg($conn,$usrid,$usrname,$passwd,$groupname,$description){
+    $sql10="insert into doe.usrinfo(usrid,usrname,passwd,description,groupname)
+value($usrid,'$usrname',md5('$passwd'),'$groupname','$description')";
+    $result=mysqli_query($conn,$sql10);
+    $response=mysqli_affected_rows($conn);
+    echo $response;
+}
+//reg($conn,2017,'孟繁新','1234','jiangke','aaaa');
+
 //echo login(0,'Lmt76mfx',$conn);
 function logout(){
     setcookie("usrid","",time()-20);
     setcookie("usrname","",time()-20);
 }
-
 function get_posts($conn)
 {
     $sql2 = "select * from doe.postinfo";
