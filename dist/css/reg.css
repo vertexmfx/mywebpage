@@ -1,0 +1,45 @@
+.frame{
+    margin-top: 100px;
+    background: whitesmoke;
+    border-radius: 15px;
+    color: #0b0b35;
+    padding: 50px 50px 50px 30px;
+}
+.inputbar{
+    margin-top: 15px;
+    margin-bottom: 10px;
+    width: 60%;
+    height: 40px;
+    border-style: solid;
+    border-color: white;
+    padding-left: 20px;
+    border-width: 1px;
+    border-radius: 5px;
+    transition: all 0.5s;
+}
+.frame{
+    padding:30px 80px 80px 80px;
+}
+div h1{
+    font-weight: bolder;
+    margin-bottom: 10px;
+}
+form h3{
+    display: inline;
+    font-weight: bold;
+    margin-right: 30px;
+}
+option{
+    margin-left: 10px;
+    width: 100%;
+}
+select{
+
+}
+.inputbar:hover{
+    border-color: rgba(54,108,253,0.7);
+}
+.inputbar.textarea{
+    width: 85%;
+    height: 100px;
+}

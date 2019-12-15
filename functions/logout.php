@@ -1,4 +1,5 @@
 <?php
-setcookie("usrname","",time()-20);
-setcookie("usrid","",time()-20);
+setcookie("usrname","",time()-3000);
+setcookie("usrid","",time()-3000);
+echo 'logout.';
 ?>

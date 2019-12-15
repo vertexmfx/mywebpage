@@ -1,0 +1,62 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注册</title>
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+    <script src="dist/js/jquery.min.js">
+    </script>
+    <script src="dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="dist/css/reg.css">
+    <script>
+        function submit() {
+            var data=$('#reginfo').serializeArray();
+            $.post("mysqlfunc.php",data,function (response) {
+            alert(response);
+                }
+            )
+        }
+    </script>
+</head>
+<body>
+<div class="container-fluid background" style="position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    color: #fff;
+    background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);">
+    <div class="container">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 frame">
+        <div class="header">
+            <h1>新用户注册</h1>
+        </div>
+        <div class="form-group">
+            <form name="reginfo" id="reginfo" method="post">
+                <h3 style="display: inline">学号:</h3>
+                <input class="inputbar" name="usrid" id="usrid" type="text" placeholder="请输入学号"><br>
+                <h3>姓名:</h3>
+                <input class="inputbar" name="usrname" id="usrname" type="text" placeholder="请输入用户名"><br>
+                <h3>密码:</h3>
+                <input class="inputbar" name="passwd" id="passwd" type="password" placeholder="密码"><br>
+                <h3>分组:</h3>
+                <select class="inputbar" name="groupname" id="groupname">
+                    <option value="jiangke">讲课组</option>
+                    <option value="wangye">网页组</option>
+                    <option value="chuti">出题组</option>
+                    <option value="other">其他</option>
+                </select><br>
+                <h3>自我描述</h3><br>
+                <textarea class="inputbar textarea" rows="3" name="description" id="description" placeholder="在此添加个人描述"></textarea><br><br>
+                <a class="btn btn-primary" type="button" name="require" id="submit" value="reg" onclick="submit()">注册</a>
+            </form>
+        </div>
+    </div>
+    </div>
+</div>
+</body>
+</html>
