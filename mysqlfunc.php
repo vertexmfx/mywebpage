@@ -72,6 +72,7 @@ value($usrid,'$usrname',md5('$passwd'),'$groupname','$description')";
 function logout(){
     setcookie("usrid","",time()-20);
     setcookie("usrname","",time()-20);
+    echo 1;
 }
 function get_posts($conn)
 {

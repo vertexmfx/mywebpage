@@ -51,7 +51,7 @@ TEXT;
                 <script type="text/javascript">
                     $(document).ready(function () {
                         $('.logout').click(function () {
-                            $.post('mysqlfuncs.php','?require=logout',function(response){
+                            $.post('mysqlfuncs.php?require=logout',function(response){
                                 window.location.href='login.php';
                                 alert('已退出登录');
                             })
