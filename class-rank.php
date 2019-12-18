@@ -6,7 +6,6 @@ if(empty($_COOKIE['usrid'])){
     include "mysqlfunc.php";
     $namelist=get_usrinfo_by_group($conn,'jiangke');
     if(!empty($_POST['submit'])){
-        echo '<script> alert("jinru");</script>';
         $rankerid=$_COOKIE['usrid'];
         $rankername=$_COOKIE['usrname'];
         $ranked=explode(",",$_POST['ranked']);
@@ -16,18 +15,21 @@ if(empty($_COOKIE['usrid'])){
         $r2=$_POST['r2'];
         $r3=$_POST['r3'];
         $r4=$_POST['r4'];
+        $r5=$_POST['content'];
         $rankinfo =array('rankerid'=>$rankerid,'rankername'=>$rankername,'rankedid'=>$rankedid,'rankedname'=>$rankedname,
-            'r1'=>$r1,'r2'=>$r2,'r3'=>$r3,'r4'=>$r4);
-        echo "<script> alert(\"$rankedid\");</script>";
-
-
-
+            'r1'=>$r1,'r2'=>$r2,'r3'=>$r3,'r4'=>$r4,'r5'=>$r5,'r6'=>'','r7'=>'',
+            'r8'=>'','r9'=>'');
+        $result=rank($conn,$rankinfo);
+        if($result==1){
+            echo "<script> alert(\"评价成功\");</script>";
+            header("Location:index.php");
+        }else{
+            echo "<script> alert(\"操作失败\");</script>";
+        }
     }
 }
-
 ?>
 <!DOCTYPE html>
-<!-- saved from url=(0034)https://expressionengine.com/login -->
 <html lang="en"
       class="wf-usual-n4-active wf-usual-i4-active wf-usual-i7-active wf-usual-n7-active wf-active gr__expressionengine_com">
 <head style="">
@@ -652,15 +654,15 @@ if(empty($_COOKIE['usrid'])){
 </head>
 
 <body class="cookie-bar-shown" data-gr-c-s-loaded="true">
-<div class="login-window" style="background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);">
-    <div class="container container--medium-width">
+<div class="login-window" style="background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);overflow: auto">
+    <div class="container container--medium-width" style="overflow: hidden;margin-bottom: 50px">
         <div style="margin-bottom: 30px">
             <h1 class="" style="color: #282afd;margin-bottom: 30px;width: 30%;display: inline" >学员评价</h1>
         </div>
         <form method="post" action="class-rank.php">
             <div class="container">
                 <div class="filter-bar">
-                    <select name="ranked" id="" class="filter-bar__item" onchange="window.location.href=this.value">
+                    <select name="ranked" id="" class="filter-bar__item">
                         <?php
                         foreach ($namelist as $item){
                             echo "<option value=\"{$item['usrid']},{$item['usrname']}\">{$item['usrname']}</option>";
@@ -708,7 +710,7 @@ if(empty($_COOKIE['usrid'])){
                     </div>
                 </div>
             <div style="width: 500px;border-radius: 15px">
-                <textarea rows="5" name="content" placeholder="请输入评价内容" style="border-radius: 10px"></textarea>
+                <textarea rows="5" name="content" placeholder="请输入评价内容" style="border-radius: 10px;color:black;"></textarea>
             </div>
             <div style="color: blue">
                 <input type="submit" name="submit" value="发布" style="margin-top: 15px;color: firebrick">

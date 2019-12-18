@@ -18,7 +18,7 @@ fclose($fin);
 }
 
 if(PHP_OS=='WINNT'){
-    $servername='39.100.73.97:3300';
+    $servername='101.132.235.162:3300';
 }else{
     $servername='localhost';
 }
@@ -61,7 +61,7 @@ function login($usrid, $passwd, $conn)
 //login(2017,'1234',$conn);
 function reg($conn,$usrid,$usrname,$passwd,$groupname,$description){
     $sql10="insert into doe.usrinfo(usrid,usrname,passwd,description,groupname)
-value($usrid,'$usrname',md5('$passwd'),'$groupname','$description')";
+value($usrid,'$usrname',md5('$passwd'),'$description','$groupname')";
     $result=mysqli_query($conn,$sql10);
     $response=mysqli_affected_rows($conn);
     echo $response;
@@ -126,6 +126,16 @@ function get_usrinfo_by_group($conn,$group){
     $result=mysqli_query($conn,$sql9);
     $namelist=mysqli_fetch_all($result,MYSQLI_ASSOC);
     return $namelist;
+}
+function rank($conn,$rankinfo){
+    $sql10="insert into doe.ranks (rankerid,rankername,rankedid,rankedname,r1,r2,r3,r4,r5,
+r6,r7,r8,r9)value({$rankinfo['rankerid']},'{$rankinfo['rankername']}',
+{$rankinfo['rankedid']},'{$rankinfo['rankedname']}','{$rankinfo['r1']}','{$rankinfo['r2']}',
+'{$rankinfo['r3']}','{$rankinfo['r4']}','{$rankinfo['r5']}','{$rankinfo['r6']}','{$rankinfo['r7']}',
+'{$rankinfo['r8']}','{$rankinfo['r9']}')";
+    mysqli_query($conn,$sql10);
+    $result=mysqli_affected_rows($conn);
+    return $result;
 }
 
 
