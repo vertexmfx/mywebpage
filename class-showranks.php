@@ -8,15 +8,27 @@
     <?php
     include "mysqlfunc.php";
     $ranklist=get_rank_info($conn);
-
     ?>
     <title>echarts</title>
+    <link rel="stylesheet" href="dist/css/reg.css">
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css">
 </head>
 <body>
-<div id="main" style="width: 600px;height:400px;"></div>
+<div class="container-fluid" style="position: relative;overflow: visible;height: 100%">
+    <div class="container">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 frame">
+            <div class="header">
+                <h1>查看学员评分</h1>
+            </div>
+            <div id="graph" style="width: 600px;height:<?php echo count($ranklist);?>00px;"></div>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('main'));
+    var myChart = echarts.init(document.getElementById('graph'));
     // 指定图表的配置项和数据
     var option = {
         tooltip : {
@@ -26,7 +38,7 @@
             }
         },
         legend: {
-            data: ['直接访问', '邮件营销','联盟广告','视频广告','搜索引擎']
+            data: ['形象气质', '讲解清晰','语言表达','自信大方']
         },
         grid: {
             left: '3%',
@@ -39,11 +51,11 @@
         },
         yAxis: {
             type: 'category',
-            data: ['周一','周二','周三','周四','周五','周六','周日']
+            data: [<?php foreach ($ranklist as $item){echo "'{$item['rankedname']}',";}?>]
         },
         series: [
             {
-                name: '直接访问',
+                name: '形象气质',
                 type: 'bar',
                 stack: '总量',
                 label: {
@@ -52,10 +64,10 @@
                         position: 'insideRight'
                     }
                 },
-                data: [320, 302, 301, 334, 390, 330, 320]
+                data: [<?php foreach ($ranklist as $item){echo "{$item['r1']},";}?>]
             },
             {
-                name: '邮件营销',
+                name: '讲解清晰',
                 type: 'bar',
                 stack: '总量',
                 label: {
@@ -64,10 +76,10 @@
                         position: 'insideRight'
                     }
                 },
-                data: [120, 132, 101, 134, 90, 230, 210]
+                data: [<?php foreach ($ranklist as $item){echo "{$item['r2']},";}?>]
             },
             {
-                name: '联盟广告',
+                name: '语言表达',
                 type: 'bar',
                 stack: '总量',
                 label: {
@@ -76,10 +88,10 @@
                         position: 'insideRight'
                     }
                 },
-                data: [220, 182, 191, 234, 290, 330, 310]
+                data: [<?php foreach ($ranklist as $item){echo "{$item['r3']},";}?>]
             },
             {
-                name: '视频广告',
+                name: '自信大方',
                 type: 'bar',
                 stack: '总量',
                 label: {
@@ -88,19 +100,7 @@
                         position: 'insideRight'
                     }
                 },
-                data: [150, 212, 201, 154, 190, 330, 410]
-            },
-            {
-                name: '搜索引擎',
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    normal: {
-                        show: true,
-                        position: 'insideRight'
-                    }
-                },
-                data: [820, 832, 901, 934, 1290, 1330, 1320]
+                data: [<?php foreach ($ranklist as $item){echo "{$item['r4']},";}?>]
             }
         ]
     };

@@ -1,0 +1,1 @@
+select sum(r1) as r1,sum(r2) as r2 from ranks where rankedid=103001;
