@@ -129,13 +129,16 @@ function get_usrinfo_by_group($conn,$group){
 }
 function rank($conn,$rankinfo){
     $sql10="insert into doe.ranks (rankerid,rankername,rankedid,rankedname,r1,r2,r3,r4,r5,
-r6,r7,r8,r9)value({$rankinfo['rankerid']},'{$rankinfo['rankername']}',
-{$rankinfo['rankedid']},'{$rankinfo['rankedname']}','{$rankinfo['r1']}','{$rankinfo['r2']}',
-'{$rankinfo['r3']}','{$rankinfo['r4']}','{$rankinfo['r5']}','{$rankinfo['r6']}','{$rankinfo['r7']}',
-'{$rankinfo['r8']}','{$rankinfo['r9']}')";
+r6,r7,r8,r9,r10)value({$rankinfo['rankerid']},'{$rankinfo['rankername']}',
+{$rankinfo['rankedid']},'{$rankinfo['rankedname']}',{$rankinfo['r1']},{$rankinfo['r2']},
+{$rankinfo['r3']},{$rankinfo['r4']},{$rankinfo['r5']},{$rankinfo['r6']},{$rankinfo['r7']},
+{$rankinfo['r8']},{$rankinfo['r9']},{$rankinfo['r10']})";
     mysqli_query($conn,$sql10);
     $result=mysqli_affected_rows($conn);
     return $result;
+}
+function get_rank_info($conn){
+    $sql11="select * from doe.ranks";
 }
 
 

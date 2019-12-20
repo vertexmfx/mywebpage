@@ -15,10 +15,10 @@ if(empty($_COOKIE['usrid'])){
         $r2=$_POST['r2'];
         $r3=$_POST['r3'];
         $r4=$_POST['r4'];
-        $r5=$_POST['content'];
+        $comment=$_POST['content'];
         $rankinfo =array('rankerid'=>$rankerid,'rankername'=>$rankername,'rankedid'=>$rankedid,'rankedname'=>$rankedname,
-            'r1'=>$r1,'r2'=>$r2,'r3'=>$r3,'r4'=>$r4,'r5'=>$r5,'r6'=>'','r7'=>'',
-            'r8'=>'','r9'=>'');
+            'r1'=>$r1,'r2'=>$r2,'r3'=>$r3,'r4'=>$r4,'r5'=>'','r6'=>'','r7'=>'',
+            'r8'=>'','r9'=>'','r10'=>$comment);
         $result=rank($conn,$rankinfo);
         if($result==1){
             echo "<script> alert(\"评价成功\");</script>";
@@ -675,37 +675,37 @@ if(empty($_COOKIE['usrid'])){
                     <div class="list-group-item custom" >
                         <h4 >形象气质：</h4>
                         <div style="margin-left:50px;display: inline;text-align: justify-all;width: 300px">
-                        <b>A&nbsp;</b><input type="radio" name="r1" value="A">&nbsp;&nbsp;&nbsp;&nbsp;
-                        <b>B&nbsp;</b><input type="radio" name="r1" value="B">&nbsp;&nbsp;&nbsp;&nbsp;
-                        <b>C&nbsp;</b><input type="radio" name="r1" value="C">&nbsp;&nbsp;&nbsp;&nbsp;
-                        <b>D&nbsp;</b><input type="radio" name="r1" value="D">
+                        <b>A&nbsp;</b><input type="radio" name="r1" value="4">&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>B&nbsp;</b><input type="radio" name="r1" value="3">&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>C&nbsp;</b><input type="radio" name="r1" value="2">&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>D&nbsp;</b><input type="radio" name="r1" value="1">
                         </div>
                     </div>
                     <div class="list-group-item custom" >
                         <h4 >讲解清晰：</h4>
                         <div class="onelist">
-                            <b>A&nbsp;</b><input type="radio" name="r2" value="A">&nbsp;&nbsp;&nbsp;&nbsp;
-                            <b>B&nbsp;</b><input type="radio" name="r2" value="B">&nbsp;&nbsp;&nbsp;&nbsp;
-                            <b>C&nbsp;</b><input type="radio" name="r2" value="C">&nbsp;&nbsp;&nbsp;&nbsp;
-                            <b>D&nbsp;</b><input type="radio" name="r2" value="D">
+                            <b>A&nbsp;</b><input type="radio" name="r2" value="4">&nbsp;&nbsp;&nbsp;&nbsp;
+                            <b>B&nbsp;</b><input type="radio" name="r2" value="3">&nbsp;&nbsp;&nbsp;&nbsp;
+                            <b>C&nbsp;</b><input type="radio" name="r2" value="2">&nbsp;&nbsp;&nbsp;&nbsp;
+                            <b>D&nbsp;</b><input type="radio" name="r2" value="1">
                         </div>
                     </div>
                     <div class="list-group-item custom" >
                         <h4 >语言表达：</h4>
                         <div class="onelist">
-                            <b>A&nbsp;</b><input type="radio" name="r3" value="A">&nbsp;&nbsp;&nbsp;&nbsp;
-                            <b>B&nbsp;</b><input type="radio" name="r3" value="B">&nbsp;&nbsp;&nbsp;&nbsp;
-                            <b>C&nbsp;</b><input type="radio" name="r3" value="C">&nbsp;&nbsp;&nbsp;&nbsp;
-                            <b>D&nbsp;</b><input type="radio" name="r3" value="D">
+                            <b>A&nbsp;</b><input type="radio" name="r3" value="4">&nbsp;&nbsp;&nbsp;&nbsp;
+                            <b>B&nbsp;</b><input type="radio" name="r3" value="3">&nbsp;&nbsp;&nbsp;&nbsp;
+                            <b>C&nbsp;</b><input type="radio" name="r3" value="2">&nbsp;&nbsp;&nbsp;&nbsp;
+                            <b>D&nbsp;</b><input type="radio" name="r3" value="1">
                         </div>
                     </div>
                     <div class="list-group-item custom" >
                         <h4 >自信大方：</h4>
                         <div class="onelist">
-                            <b>A&nbsp;</b><input type="radio" name="r4" value="A">&nbsp;&nbsp;&nbsp;&nbsp;
-                            <b>B&nbsp;</b><input type="radio" name="r4" value="B">&nbsp;&nbsp;&nbsp;&nbsp;
-                            <b>C&nbsp;</b><input type="radio" name="r4" value="C">&nbsp;&nbsp;&nbsp;&nbsp;
-                            <b>D&nbsp;</b><input type="radio" name="r4" value="D">
+                            <b>A&nbsp;</b><input type="radio" name="r4" value="4">&nbsp;&nbsp;&nbsp;&nbsp;
+                            <b>B&nbsp;</b><input type="radio" name="r4" value="3">&nbsp;&nbsp;&nbsp;&nbsp;
+                            <b>C&nbsp;</b><input type="radio" name="r4" value="2">&nbsp;&nbsp;&nbsp;&nbsp;
+                            <b>D&nbsp;</b><input type="radio" name="r4" value="1">
                         </div>
                     </div>
                 </div>
