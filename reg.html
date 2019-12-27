@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="dist/css/reg.css">
     <script>
         function submitreg() {
-            var pass=document.getElementById('passwd');
-            var repass=document.getElementById('repass');
-            if(pass===repass){
+            var pass=document.getElementById('passwd').value;
+            var repass=document.getElementById('repasswd').value;
+            if(pass==repass){
                 var data=$('#reginfo').serialize();
                 $.ajax({
                     type:"POST",
@@ -62,7 +62,7 @@
                 <input class="inputbar" name="usrname" id="usrname" value="" type="text" placeholder="请输入你的姓名"><br>
                 <h3>密码:</h3>
                 <input class="inputbar" name="passwd" id="passwd" value="" type="password" placeholder="密码"><br>
-                <h3>再次输入密码：</h3>
+                <h3>重输:</h3>
                 <input class="inputbar" name="repasswd" id="repasswd" value="" type="password" placeholder="再次输入密码"><br>
                 <h3>分组:</h3>
                 <select class="inputbar" name="groupname" id="groupname">
