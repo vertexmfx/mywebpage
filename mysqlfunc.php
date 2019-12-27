@@ -136,7 +136,7 @@ r6,r7,r8,r9,r10)value({$rankinfo['rankerid']},'{$rankinfo['rankername']}',{$rank
     return $result;
 }
 function get_rank_info($conn){
-    $sql11="select sum(r1) as r1,sum(r2) as r2,sum(r3) as r3,sum(r4) as r4,rankedname from ranks group by rankedid";
+    $sql11="select avg(r1) as r1,avg(r2) as r2,avg(r3) as r3,avg(r4) as r4,count(*) as count,rankedname from ranks group by rankedid";
     $result=mysqli_query($conn,$sql11);
     $ranks=mysqli_fetch_all($result,MYSQLI_ASSOC);
     return $ranks;

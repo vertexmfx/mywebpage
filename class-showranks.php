@@ -9,7 +9,7 @@
     include "mysqlfunc.php";
     $ranklist=get_rank_info($conn);
     ?>
-    <title>echarts</title>
+    <title>学员评分结果</title>
     <link rel="stylesheet" href="dist/css/reg.css">
     <link rel="stylesheet" href="dist/css/bootstrap.min.css">
 </head>
@@ -38,7 +38,7 @@
             }
         },
         legend: {
-            data: ['形象气质', '讲解清晰','语言表达','自信大方']
+            data: ['气质、精神、声音', '课前准备、课件','内容熟悉，思路清晰','概念和理论阐述清晰']
         },
         grid: {
             left: '3%',
@@ -51,7 +51,7 @@
         },
         yAxis: {
             type: 'category',
-            data: [<?php foreach ($ranklist as $item){echo "'{$item['rankedname']}',";}?>]
+            data: [<?php foreach ($ranklist as $item){echo "'{$item['rankedname']}({$item['count']})',";}?>]
         },
         series: [
             {

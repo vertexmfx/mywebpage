@@ -661,7 +661,7 @@ if(empty($_COOKIE['usrid'])){
         </div>
         <form method="post" action="class-rank.php">
             <div class="container">
-                <div class="filter-bar">
+                <div class="filter-bar"><h4><b>评价学员：</b></h4>
                     <select name="ranked" id="" class="filter-bar__item">
                         <?php
                         foreach ($namelist as $item){
@@ -672,8 +672,8 @@ if(empty($_COOKIE['usrid'])){
                 </div>
                 <div class="list-group">
                     <div class="list-group-item-heading"><h3>评价打分</h3></div>
-                    <div class="list-group-item custom" >
-                        <h4 >形象气质：</h4>
+                    <div class="list-group-item custom" style="width: 600px">
+                        <h4 >气质、精神、声音&nbsp;&nbsp;&nbsp;</h4>
                         <div style="margin-left:50px;display: inline;text-align: justify-all;width: 300px">
                         <b>A&nbsp;</b><input type="radio" name="r1" value="4">&nbsp;&nbsp;&nbsp;&nbsp;
                         <b>B&nbsp;</b><input type="radio" name="r1" value="3">&nbsp;&nbsp;&nbsp;&nbsp;
@@ -681,8 +681,8 @@ if(empty($_COOKIE['usrid'])){
                         <b>D&nbsp;</b><input type="radio" name="r1" value="1">
                         </div>
                     </div>
-                    <div class="list-group-item custom" >
-                        <h4 >讲解清晰：</h4>
+                    <div class="list-group-item custom" style="width: 600px">
+                        <h4 >课前准备、课件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4>
                         <div class="onelist">
                             <b>A&nbsp;</b><input type="radio" name="r2" value="4">&nbsp;&nbsp;&nbsp;&nbsp;
                             <b>B&nbsp;</b><input type="radio" name="r2" value="3">&nbsp;&nbsp;&nbsp;&nbsp;
@@ -690,8 +690,8 @@ if(empty($_COOKIE['usrid'])){
                             <b>D&nbsp;</b><input type="radio" name="r2" value="1">
                         </div>
                     </div>
-                    <div class="list-group-item custom" >
-                        <h4 >语言表达：</h4>
+                    <div class="list-group-item custom" style="width: 600px">
+                        <h4 >内容熟悉，思路清晰</h4>
                         <div class="onelist">
                             <b>A&nbsp;</b><input type="radio" name="r3" value="4">&nbsp;&nbsp;&nbsp;&nbsp;
                             <b>B&nbsp;</b><input type="radio" name="r3" value="3">&nbsp;&nbsp;&nbsp;&nbsp;
@@ -699,8 +699,8 @@ if(empty($_COOKIE['usrid'])){
                             <b>D&nbsp;</b><input type="radio" name="r3" value="1">
                         </div>
                     </div>
-                    <div class="list-group-item custom" >
-                        <h4 >自信大方：</h4>
+                    <div class="list-group-item custom" style="width: 600px">
+                        <h4 >概念和理论阐述清晰</h4>
                         <div class="onelist">
                             <b>A&nbsp;</b><input type="radio" name="r4" value="4">&nbsp;&nbsp;&nbsp;&nbsp;
                             <b>B&nbsp;</b><input type="radio" name="r4" value="3">&nbsp;&nbsp;&nbsp;&nbsp;
@@ -709,11 +709,11 @@ if(empty($_COOKIE['usrid'])){
                         </div>
                     </div>
                 </div>
-            <div style="width: 500px;border-radius: 15px">
-                <textarea rows="5" name="content" placeholder="请输入评价内容" style="border-radius: 10px;color:black;"></textarea>
+            <div style="width: 600px;border-radius: 15px">
+                <textarea rows="5" name="content" placeholder="请输入评价内容" style="width:600px;border-radius: 10px;color:black;"></textarea>
             </div>
             <div style="color: blue">
-                <input type="submit" name="submit" value="发布" style="margin-top: 15px;color: firebrick">
+                <input type="submit" name="submit" value="提交评价" style="margin-top: 15px;color: firebrick"><a class="btn btn-link" target="_blank" href="class-showranks.php"><h4>查看评分</h4></a>
             </div>
             </div>
         </form>
