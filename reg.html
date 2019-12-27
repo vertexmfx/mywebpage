@@ -12,24 +12,31 @@
     <link rel="stylesheet" href="dist/css/reg.css">
     <script>
         function submitreg() {
-            var data=$('#reginfo').serialize();
-            $.ajax({
-                type:"POST",
-                dataType:"text",
-                url:"mysqlfunc.php?require=reg",
-                data:data,
-                success:function (data) {
-                    if(data==1){
-                        window.location.href="index.php";
-                    }else{
-                        alert("信息填写错误，注册失败");
-                        window.location.href="reg.html";
+            var pass=document.getElementById('passwd');
+            var repass=document.getElementById('repass');
+            if(pass===repass){
+                var data=$('#reginfo').serialize();
+                $.ajax({
+                    type:"POST",
+                    dataType:"text",
+                    url:"mysqlfunc.php?require=reg",
+                    data:data,
+                    success:function (data) {
+                        if(data==1){
+                            window.location.href="index.php";
+                        }else{
+                            alert("信息填写错误，注册失败");
+                            window.location.href="reg.html";
+                        }
+                    },
+                    error:function (result) {
+                        alert("登录异常");
                     }
-                },
-                error:function (result) {
-                    alert("登录异常");
-                }
-            });}
+                });
+            }else{
+                alert('两次输入密码不正确');
+            }
+            }
     </script>
 </head>
 <body style="position:relative;
@@ -55,6 +62,8 @@
                 <input class="inputbar" name="usrname" id="usrname" value="" type="text" placeholder="请输入你的姓名"><br>
                 <h3>密码:</h3>
                 <input class="inputbar" name="passwd" id="passwd" value="" type="password" placeholder="密码"><br>
+                <h3>再次输入密码：</h3>
+                <input class="inputbar" name="repasswd" id="repasswd" value="" type="password" placeholder="再次输入密码"><br>
                 <h3>分组:</h3>
                 <select class="inputbar" name="groupname" id="groupname">
                     <option value="jiangke">讲课组</option>
