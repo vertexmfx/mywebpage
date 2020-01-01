@@ -76,7 +76,7 @@ function logout(){
 }
 function get_posts($conn)
 {
-    $sql2 = "select * from doe.postinfo";
+    $sql2 = "select * from doe.postinfo order by postid desc";
     $postsresult = mysqli_query($conn, $sql2);
     $posts = mysqli_fetch_all($postsresult, MYSQLI_ASSOC);
     return $posts;
