@@ -23,10 +23,10 @@ loginfo();
     <script src="dist/js/jquery.min.js"></script>
     <script src="dist/js/bootstrap.min.js"></script>
 </head>
-<body class="is-boxed has-animations">
-<div class="body-wrap">
+<body class="is-boxed has-animations" >
+<div class="body-wrap" style="background-image: url('img/2020(1).png');background-size:1000px;background-repeat:no-repeat;background-position-x:200px;background-attachment: fixed">
     <header class="site-header">
-        <div class="container">
+        <div class="container" >
             <div class="site-header-inner">
                 <div class="brand header-brand">
                     <h1 class="m-0">
@@ -63,15 +63,17 @@ TEXT;
 
     <main>
         <section class="hero">
-            <div class="container" >
-                <div class="hero-inner">
-                    <div class="hero-copy">
+            <div class="container">
+                <div class="hero-inner" >
+                    <div class="hero-copy" >
                         <h1 class="hero-title mt-0">试验设计课程</h1>
                         <p class="hero-paragraph">试验设计是一门以试验的设计与数据的分析处理为主要研究内容的学科。</p>
+
                         <div class="hero-cta"><a class="button button-primary" href="class-info.html">课程简介</a><a
                                     class="button" href="#">课程安排</a></div>
                     </div>
                     <div class="hero-figure anime-element">
+
                         <svg class="placeholder" width="528" height="396" viewBox="0 0 528 396">
                             <rect width="528" height="396" style="fill:transparent;"/>
                         </svg>
@@ -85,6 +87,7 @@ TEXT;
                         <div class="hero-figure-box hero-figure-box-08" data-rotation="-22deg"></div>
                         <div class="hero-figure-box hero-figure-box-09" data-rotation="-52deg"></div>
                         <div class="hero-figure-box hero-figure-box-10" data-rotation="-50deg"></div>
+
                     </div>
                 </div>
             </div>
