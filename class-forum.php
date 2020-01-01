@@ -118,6 +118,7 @@ $posts=get_posts($conn);
 foreach ($posts as $item){
     $postid=$item['postid'];
     $replys=replycount_by_postid($conn,$postid);
+    $foundtime=substr($item['foundtime'],0,10);
     print <<<POST
 <a href="class-forum-postdetail.php?postid={$item['postid']}" target="_blank">
 											<div class="list-item">
@@ -127,8 +128,8 @@ foreach ($posts as $item){
 												<div class="list-item__info">
 													<h4 class="list-item__title">{$item['topic']}</h4>
 													<p class="list-item__subtitle">{$item['description']}</p>
-													<p class="list-item__meta"><span class="list-item__tag">{$item['tag']}</span> &nbsp; 创建时间:
-														about 14 hours ago 创建者：{$item['usrname']} &nbsp; · &nbsp; {$item['views']} 浏览 &nbsp; · &nbsp; {$replys} 回复</p>
+													<p class="list-item__meta"><span class="list-item__tag">{$item['tag']}</span> &nbsp; 创建时间:$foundtime
+														创建者：{$item['usrname']} &nbsp; · &nbsp; {$item['views']} 浏览 &nbsp; · &nbsp; {$replys} 回复</p>
 												</div>
 											</div>
 										</a>
