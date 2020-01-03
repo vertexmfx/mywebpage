@@ -118,7 +118,7 @@ TEXT;
                                 <div class="feature-icon"><br/>
                                     <img src="dist/images/feature-icon-02.svg" alt="Feature 02">
                                 </div>
-                                <a href="test.html"><h4 class="feature-title mt-24">学员评价</h4></a>
+                                <a href="class-rank.php"><h4 class="feature-title mt-24">学员评价</h4></a>
                                 <p class="text-sm mb-0" style="color: whitesmoke;font-style:italic;">对授课、出题、网页组的成员进行评价</p>
                             </div>
                         </div>
