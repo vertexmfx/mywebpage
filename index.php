@@ -22,6 +22,27 @@ loginfo();
     <script src="dist/js/scrollreveal.min.js"></script>
     <script src="dist/js/jquery.min.js"></script>
     <script src="dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function timeFn() {//di作为一个变量传进来
+            //如果时间格式是正确的，那下面这一步转化时间格式就可以不用了
+            var d1="2020-01-08 08:00:00";
+            var dateBegin = new Date(d1.replace(/-/g, "/"));//将-转化为/，使用new Date
+            var dateEnd = new Date();//获取当前时间
+            var dateDiff = dateBegin.getTime()-dateEnd.getTime();//时间差的毫秒数
+            var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天数
+            var leave1=dateDiff%(24*3600*1000);    //计算天数后剩余的毫秒数
+            var hours=Math.floor(leave1/(3600*1000));//计算出小时数
+            //计算相差分钟数
+            var leave2=leave1%(3600*1000);   //计算小时数后剩余的毫秒数
+            var minutes=Math.floor(leave2/(60*1000));//计算相差分钟数
+            //计算相差秒数
+            var leave3=leave2%(60*1000);      //计算分钟数后剩余的毫秒数
+            var seconds=Math.round(leave3/1000);
+            document.getElementById("timer").innerText=" 距离考试还有： "+dayDiff+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒";
+            //alert(" 相差 "+dayDiff+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒");
+        }
+        setInterval("timeFn()",1000);
+    </script>
 </head>
 <body class="is-boxed has-animations" >
 <div class="body-wrap" style="background-image: url('img/2020(1).png');background-size:1000px;background-repeat:no-repeat;background-position-x:200px;background-attachment: fixed">
@@ -97,6 +118,9 @@ TEXT;
         <section class="features section">
             <div class="container">
                 <div class="features-inner section-inner has-bottom-divider">
+                    <div id="timeleft" style="background-color: rgba(253,255,129,0.84);height: 50px;text-align: center;border-radius: 10px;padding-bottom: 20px">
+                        <h3 id="timer" style="color: #0f0f0f"></h3>
+                    </div>
                     <div class="features-wrap">
                         <!-- 课程资源 -->
                         <a href="class-resource.php?category=kejian">
@@ -142,15 +166,16 @@ TEXT;
                 </div>
             </div>
         </section>
+        <!--
         <section>
             <div id="myCarousel" class="carousel slide" style="width: 1070px;margin: auto">
-                <!-- 轮播（Carousel）指标 -->
+                <!-- 轮播（Carousel）指标 --
                 <ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                     <li data-target="#myCarousel" data-slide-to="1"></li>
                     <li data-target="#myCarousel" data-slide-to="2"></li>
                 </ol>
-                <!-- 轮播（Carousel）项目 -->
+                <!-- 轮播（Carousel）项目 --
                 <div class="carousel-inner">
                     <div class="item active" style="">
                         <div class="panel panel-default">
@@ -183,14 +208,14 @@ TEXT;
                         </div>
                     </div>
                 </div>
-                <!-- 轮播（Carousel）导航 -->
+                <!-- 轮播（Carousel）导航 --
                 <a class="carousel-control-custom left" href="#myCarousel"
                    data-slide="next"><span class="glyphicon glyphicon-chevron-left"></a>
                 <a class="carousel-control-custom right" href="#myCarousel"
                    data-slide="prev"> <span class="glyphicon glyphicon-chevron-right"></span></a>
 
             </div>
-        </section>
+        </section>-->
         <section class="cta section">
             <div class="container">
                 <div class="cta-inner section-inner">
