@@ -47,12 +47,13 @@ if(!empty($_GET['require'])){
 function login($usrid, $passwd, $conn)
 {
     $usrname = null;
-    $sql1 = "select * from doe.usrinfo where usrid=$usrid and passwd = md5('$passwd')";
+    #$sql1 = "select * from doe.usrinfo where usrid=$usrid and passwd = md5('$passwd')";
+    $sql1 = "select * from doe.usrinfo where usrname='$usrid' and passwd = md5('$passwd')";
     $loginresult = mysqli_query($conn, $sql1);
-    $usrname = mysqli_fetch_assoc($loginresult)['usrname'];
+    $usrname = mysqli_fetch_assoc($loginresult)['usrid'];
     if($usrname!=null){
-        setcookie("usrid",$_POST['usrid'],time()+1800);
-        setcookie("usrname",$usrname,time()+1800);
+        setcookie("usrname",$_POST['usrid'],time()+1800);
+        setcookie("usrid",$usrname,time()+1800);
         echo 1;
         }else{
         echo 0;

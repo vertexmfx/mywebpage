@@ -41,7 +41,7 @@
 			<div class="login-center clearfix">
 				<div class="login-center-img"><img src="img/name.png"/></div>
 				<div class="login-center-input">
-					<input type="text" name="usrid" value="" id="inputusrid" placeholder="请输入您的账号" onfocus="this.placeholder=''" onblur="this.placeholder='请输入您的账号'"/>
+					<input type="text" name="usrid" value="" id="inputusrid" placeholder="请输入您的用户名" onfocus="this.placeholder=''" onblur="this.placeholder='请输入您的账号'"/>
 					<div class="login-center-input-text">账号</div>
 				</div>
 			</div>
