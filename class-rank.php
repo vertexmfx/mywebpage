@@ -1,6 +1,6 @@
 <?php
 header("content-type:text/html;charset=utf-8");
-if(empty($_COOKIE['usrid'])){
+if(empty($_COOKIE['usrname'])){
     header("Location:login.php");
 }else{
     include "mysqlfunc.php";

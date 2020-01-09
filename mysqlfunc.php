@@ -143,6 +143,47 @@ function get_rank_info($conn){
     return $ranks;
 }
 
+function select_ranks($conn,$usrname){
+    $sqljiangke="select usrname from doe.usrinfo where groupname='jiangke'
+and usrname not in(select distinct rankedname from doe.ranks where rankername='{$usrname}');";
+    $result=mysqli_query($conn,$sqljiangke);
+    $resultjiangke=mysqli_fetch_all($result,MYSQLI_ASSOC);
+    $sqlchuti="select usrname,description from doe.usrinfo where groupname='chuti'
+and usrname not in(select distinct rankedname from doe.ranks where rankername='{$usrname}') order by description;";
+    $result=mysqli_query($conn,$sqlchuti);
+    $resultchuti=mysqli_fetch_all($result,MYSQLI_ASSOC);
+    $sqlwangye="select usrname,description from doe.usrinfo where groupname='wangye'
+and usrname not in(select distinct rankedname from doe.ranks where rankername='{$usrname}') order by type,description;";
+    $result=mysqli_query($conn,$sqlwangye);
+    $resultwangye=mysqli_fetch_all($result,MYSQLI_ASSOC);
+    return [$resultjiangke,$resultchuti,$resultwangye];
+}
+
+class AddRanks{
+    public $sql="insert into doe.ranks(rankername,rankedname,r1,r2,r3,r4,r10)value";
+    public $rankername=null;
+    function setRankername($name){
+        $this->rankername=$name;
+    }
+    function addValue($rankedname,$values){
+        $newsql="('{$this->rankername}','{$rankedname}',{$values[0]},{$values[1]},{$values[2]},{$values[3]},'{$values[4]}'),";
+        $this->sql=$this->sql.$newsql;
+    }
+    function submit($conn){
+        $this->sql=rtrim($this->sql, ",");
+        mysqli_query($conn,$this->sql);
+        $result=mysqli_affected_rows($conn);
+        return $result;
+    }
+}
+
+function select_rand_reviews($conn,$name){
+    $sql="select rankername,rankedname,r10 from doe.ranks where rankername !='{$name}' and r10 !='' order by rand() limit 9;";
+    $result=mysqli_query($conn,$sql);
+    $reviews=mysqli_fetch_all($result,MYSQLI_ASSOC);
+    return $reviews;
+
+}
 
 //echo postcount_by_poster($conn,0);
 //echo get_posts_by_id($conn,2)['usrname'];

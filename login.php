@@ -19,6 +19,7 @@
                 data:data,
                 success:function (data) {
                     if(data==1){
+
                         window.location.href="index.php";
                     }else{
                         alert("用户名或密码错误");
