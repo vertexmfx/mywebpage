@@ -25,7 +25,7 @@ loginfo();
     <script type="text/javascript">
         function timeFn() {//di作为一个变量传进来
             //如果时间格式是正确的，那下面这一步转化时间格式就可以不用了
-            var d1="2020-01-08 08:00:00";
+            var d1="2020-01-17 12:00:00";
             var dateBegin = new Date(d1.replace(/-/g, "/"));//将-转化为/，使用new Date
             var dateEnd = new Date();//获取当前时间
             var dateDiff = dateBegin.getTime()-dateEnd.getTime();//时间差的毫秒数
@@ -38,7 +38,7 @@ loginfo();
             //计算相差秒数
             var leave3=leave2%(60*1000);      //计算分钟数后剩余的毫秒数
             var seconds=Math.round(leave3/1000);
-            document.getElementById("timer").innerText=" 距离考试还有： "+dayDiff+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒";
+            document.getElementById("timer").innerText=" 距离17号还有： "+dayDiff+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒";
             //alert(" 相差 "+dayDiff+"天 "+hours+"小时 "+minutes+" 分钟"+seconds+" 秒");
         }
         setInterval("timeFn()",1000);
