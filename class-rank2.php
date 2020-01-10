@@ -22,7 +22,7 @@ if(!empty($_POST['ranksubmit'])){
         $i++;
         if($i==5){
             $i=0;
-            $rankedname=substr($key,3,6,"UTF-8");
+            $rankedname=substr($key,3,10);
             #echo $rankedname;
             #echo $rankValue[4];
             $addrank->addValue($rankedname,$rankValue);
