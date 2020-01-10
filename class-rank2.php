@@ -4,9 +4,6 @@ include "mysqlfunc.php";
 if(empty($_COOKIE['usrname'])){
     header("Location:login.php");
 }
-if($_COOKIE['usrname']!="易泰河" && $_COOKIE['usrname']!='王正明'){
-    header("Location:class-rank.php");
-}
 $namelist=select_ranks($conn,$_COOKIE['usrname']);
 $namelistJiangke=$namelist[0];
 $namelistChuti=$namelist[1];
