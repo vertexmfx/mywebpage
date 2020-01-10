@@ -185,6 +185,13 @@ function select_rand_reviews($conn,$name){
 
 }
 
+function update_passwd($conn,$usrname,$newpass){
+    $sql="update doe.usrinfo set passwd=md5('{$newpass}') where usrname='{$usrname}';";
+    $result=mysqli_query($conn,$sql);
+    $ok=mysqli_affected_rows($conn);
+    return $ok;
+}
+
 //echo postcount_by_poster($conn,0);
 //echo get_posts_by_id($conn,2)['usrname'];
 //echo reply($conn,1,0,'admin','这是一个测试回复');
