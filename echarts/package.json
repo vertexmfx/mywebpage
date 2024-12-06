@@ -28,7 +28,7 @@
   },
   "bundleDependencies": false,
   "dependencies": {
-    "zrender": "4.1.2"
+    "zrender": "4.3.3"
   },
   "deprecated": false,
   "description": "A powerful charting and visualization library for browser",
